@@ -66,6 +66,12 @@ class DeBolleHarten extends SystemCard
 			'3S' => [
 				'+6-3+0+0, PREEMPTIVE',
 			],
+			'4C' => [
+				'-3-3+0+7, PREEMPTIVE',
+			],
+			'4D' => [
+				'-3-3+7+0, PREEMPTIVE',
+			],
 		];
 	}
 }
