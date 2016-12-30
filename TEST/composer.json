@@ -1,0 +1,9 @@
+{
+    "autoload": {
+        "psr-0": {
+            "": ["../TEST/src/", "C:/Users/Flip/PhpstormProjects/BridgeBiddingService/TEST/tests/"],
+            "bbs\\": ["../BBS/src/bbs/"]
+        },
+        "classmap": ["../BBS/src/bbs/"]
+    }
+}

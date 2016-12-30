@@ -1,0 +1,25 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: flipboer
+ * Date: 25/11/2016
+ * Time: 21:32
+ */
+
+namespace bbs;
+
+class BidderTest extends \BaseTest
+{
+    /** test */
+    public function testTest()
+    {
+        $this->assertEquals("True", "True");
+    }
+
+    public function testBid()
+    {
+        $one_notrump = new SingleBid('1N', 'NON_FORCING', [14,17], ['FOUR333', 'BAL', 'SEMIBAL'], null);
+        $this->assertInstanceOf('bbs\\SingleBid',$one_notrump);
+    }
+
+}
