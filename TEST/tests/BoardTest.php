@@ -5,13 +5,11 @@ namespace bbs;
 
 class BoardTest extends \BaseTest
 {
-    /**
-     * @test
-     */
-    public function createBoard()
+	/**
+	 * @test
+	 */
+	public function createBoard()
     {
-
-
 	    $martine = new RobotPlayer('Martine');
         $flip = new RobotPlayer('Flip');
         $victor = new RobotPlayer('Victor');
@@ -22,18 +20,6 @@ class BoardTest extends \BaseTest
 		$nextBid = $board1->getNextBid();
 
 	    print_r($nextBid);
-
 		return $board1;
     }
-
-	/**
-	 * @test
-	 */
-
-    public function startPlay()
-    {
-
-    }
-
-
 }

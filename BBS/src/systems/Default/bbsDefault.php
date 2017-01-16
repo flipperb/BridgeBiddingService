@@ -9,7 +9,7 @@ class bbsDefault extends BiddingSystem
         parent::__construct('bbsDefault');
     }
 
-    public function getGadgets()
+    public function listGadgets()
     {
         $gadgets = [
                 'NATURAL',
@@ -25,31 +25,31 @@ class bbsDefault extends BiddingSystem
         return $gadgets;
     }
 
-    public function getHcpRanges()
+    public function listHcpRanges()
     {
         $hcpRanges = [
-            'VERYWEAK' => [0, 5],
-            'WEAK' => [4, 7],
-            'PREEMPTIVE' => [5-10],
-            'INVITATIONAL' => [7, 11],
-            'OPENING' => [11, 15],
-            'STRONG' => [15, 37],
-            'VERYSTRONG' => [18, 37],
-            'WEAKNOTRUMP' => [11, 14],
-            'STRONGNOTRUMP' => [14, 17],
-            'STRONGERNOTRUMP' => [17, 19],
-            'TWONOTRUMP' => [19, 21],
-            'THREENOTRUMP' => [21, 23],
-            'FOURNOTRUMP' => [23, 25],
-            'FIVENOTRUMP' => [25, 27],
-            'SIXNOTRUMP' => [27, 29],
-            'SEVENNOTRUMP' => [29, 37],
+            'HCP_VERYWEAK' => [0, 5],
+            'HCP_WEAK' => [4, 7],
+            'HCP_PREEMPTIVE' => [5-10],
+            'HCP_INVITATIONAL' => [7, 11],
+            'HCP_OPENING' => [11, 15],
+            'HCP_STRONG' => [15, 37],
+            'HCP_VERYSTRONG' => [18, 37],
+            'HCP_WEAK_NO' => [11, 14],
+            'HCP_STRONG_NO' => [14, 17],
+            'HCP_STRONGER_NO' => [17, 19],
+            'HCP_TWO_NO' => [19, 21],
+            'HCP_THREE_NO' => [21, 23],
+            'HCP_FOUR_NO' => [23, 25],
+            'HCP_FIVE_NO' => [25, 27],
+            'HCP_SIX_NO' => [27, 29],
+            'HCP_SEVEN_NO' => [29, 37],
         ];
 
         return $hcpRanges;
     }
 
-    public function getShapes()
+    public function listShapes()
     {
         $shapes = [
             'FOUR333' => [4333],
@@ -66,7 +66,7 @@ class bbsDefault extends BiddingSystem
         return $shapes;
     }
 
-    public function getSuitQualities()
+    public function listSuitQualities()
     {
         $suitQualities = [
 		    'SOLID' => ['AKQJx'],

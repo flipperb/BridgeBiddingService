@@ -5,14 +5,30 @@ namespace bbs;
 
 class SystemBid
 {
-	use hasName;
+	private $type = '';
+	private $forcing = '';
+	private $meanings = [];
 
-    private $systemCard;
-
-	public function __construct($name, $systemCard)
+	public function __construct($type, $forcing, $meanings)
 	{
-		$this->systemCard = $systemCard;
-	    $this->setName($name);
+		$this->type = $type;
+		$this->forcing = $forcing;
+		$this->meanings = is_array($meanings) ? $meanings : [$meanings];
+	}
+
+	public function getType()
+	{
+		return $this->type;
+	}
+
+	public function getForcing()
+	{
+		return $this->forcing;
+	}
+
+	public function getMeanings()
+	{
+		return $this->meanings;
 	}
 }
 

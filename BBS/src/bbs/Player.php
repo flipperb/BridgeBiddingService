@@ -20,7 +20,7 @@ class Player
 		return new Pass($this);
     }
 
-    public function askOpeningBid($board)
+    public function askOpeningBid(Board $board)
     {
 	    return new Pass($this);
     }

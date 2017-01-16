@@ -8,7 +8,7 @@
 
 namespace bbs;
 
-
+/*
 class OpeningBids
 {
     public function listOpeningBids()
@@ -25,3 +25,4 @@ class OpeningBids
         $bids['1N'] = new SingleBid('1N','NON_FORCING', new hcpRange(14,17),['FOUR333','BAL','SEMIBAL']);
     }
 }
+*/

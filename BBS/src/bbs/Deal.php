@@ -23,5 +23,10 @@ class Deal
     {
         return $this->hands;
     }
+
+    public function getHand($wind)
+    {
+	    return $this->hands['N'];
+    }
 }
 
