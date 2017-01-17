@@ -2,11 +2,11 @@
 
 namespace bbs;
 
-class MatchOnHCP extends Matcher
+class MatchOnMHCP extends Matcher
 {
 	public function calcMatch(Hand $hand, Meaning $meaning)
 	{
-		$match = $this->matchInHcpRanges($hand->getHcp(), $meaning->getHcpRanges());
+		$match = $this->matchInHcpRanges($hand->getMhcp(), $meaning->getHcpRanges());
 		return $match;
 	}
 
@@ -68,8 +68,7 @@ class MatchOnHCP extends Matcher
 
 	public function getRuns()
 	{
-/*
-		return [[
+/*		return [[
 			'match' => '1.0',
 			'adjust_min' => '0',
 			'adjust_max' => '0',

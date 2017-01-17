@@ -3,7 +3,7 @@
 namespace bbs;
 
 
-class MatchOnSuit extends Match
+class MatchOnSuit extends Matcher
 {
 
 }

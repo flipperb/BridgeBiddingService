@@ -1,15 +1,8 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: flipboer
- * Date: 12/01/2017
- * Time: 21:30
- */
 
 namespace bbs;
 
-
-class MatchOnShape extends Match
+class MatchOnShape extends Matcher
 {
 	public function calcMatch(Hand $hand, Meaning $meaning)
 	{
@@ -19,6 +12,10 @@ class MatchOnShape extends Match
 
 	public function matchShapes($handShapes, $bidShapes)
 	{
+		if (empty($bidShapes)) {
+			return 1;
+		}
+
 		foreach ($handShapes as $handShape) {
 			foreach ($bidShapes as $bidShape) {
 				if ($handShape == $bidShape) {

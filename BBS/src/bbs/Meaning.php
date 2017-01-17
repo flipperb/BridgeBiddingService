@@ -10,12 +10,12 @@ class Meaning
 	private $shapes = [];
 	private $distributions = [];
 
-	public function __construct($promisedSuit, $hcpRanges, $shapes, $distributions = '')
+	public function __construct($promisedSuit, $hcpRanges, $shapes, $distributions = [])
 	{
 		$this->promisedSuit = $promisedSuit;
 		$this->hcpRanges = is_array($hcpRanges) ? $hcpRanges : explode(',',$hcpRanges);
 		$this->shapes = is_array($shapes) ? $shapes : explode(',',$shapes);
-		$this->distributions = is_array($distributions) ? $distributions : explode(',',$distributions);
+		$this->distributions = is_array($distributions) ? $distributions : explode(',', $distributions);
 	}
 
 	public function getPromisedSuit()

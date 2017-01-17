@@ -25,7 +25,7 @@ class RobotPlayer extends Player
 		$openingBids->createBids();
 		$matches = [];
 		foreach ($openingBids->getBids() as $key => $bid) {
-			$matches[$key] = $this->matchBid($board->getDeal()->getHand(1), $bid);
+			$matches[$key] = $this->matchBid($board->getPlayerHand($this), $bid);
 		}
 
 		$bestKey = '';
@@ -36,15 +36,29 @@ class RobotPlayer extends Player
 				$bestMatch = $match;
 			}
 		}
-		return new Bid($this, $bestKey);
+		return new Bid($this, $bestKey, $openingBids->getBids()[$bestKey]);
+	}
+
+	public function createMatchers(Hand $hand, Meaning $meaning)
+	{
+		$matchers = [];
+		$matchers['hcp'] = new MatchOnHCP($hand, $meaning);
+		$matchers['mhcp'] = new MatchOnMHCP($hand, $meaning);
+		$matchers['shape'] = new MatchOnShape($hand, $meaning);
+		$matchers['distribution'] = new MatchOnDistribution($hand, $meaning);
+		return $matchers;
 	}
 
 	public function matchBid(Hand $hand, SystemBid $systemBid)
 	{
 		$bestMatch = 0;
 		foreach ($systemBid->getMeanings() as $meaning) {
-			$matcher = new MatchOnHCP($hand, $meaning);
-			$match = $matcher->calcMatch($hand, $meaning);
+			$matchers = $this->createMatchers($hand, $meaning);
+			$totalMatch = 0;
+			foreach ($matchers as $matcher) {
+				$totalMatch += $matcher->getMatch();
+			}
+			$match = $totalMatch / count($matchers);
 			if ($match > $bestMatch) {
 				$bestMatch = $match;
 			}

@@ -26,7 +26,8 @@ class Deal
 
     public function getHand($wind)
     {
-	    return $this->hands['N'];
+	    return $this->hands[$wind];
     }
 }
+
 

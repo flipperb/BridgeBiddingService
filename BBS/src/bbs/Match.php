@@ -1,15 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: flipboer
- * Date: 12/01/2017
- * Time: 21:30
- */
 
 namespace bbs;
 
 
-class Match
+class Matcher
 {
 	private $hand;
 	private $meaning;
@@ -35,5 +29,10 @@ class Match
 	public function calcMatch(Hand $hand, Meaning $meaning)
 	{
 		return 0;
+	}
+
+	public function getMatch()
+	{
+		return $this->match;
 	}
 }

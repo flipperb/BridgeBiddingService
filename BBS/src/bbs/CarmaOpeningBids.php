@@ -2,7 +2,7 @@
 
 namespace bbs;
 
-class DeBolleHartenOpeningBids extends OpeningBids
+class CarmaOpeningBids extends OpeningBids
 {
 	public function createBids()
 	{
@@ -10,12 +10,12 @@ class DeBolleHartenOpeningBids extends OpeningBids
 				new Meaning('PASS', 'HCP_WEAK, HCP_VERYWEAK, HCP_INVITATIONAL', ''),
 			]
 		));
-		$this->addBid('1c', new SystemBid('ARTIFICIAL', 'FORCING', [
-			new Meaning('+4H', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG','UNBALANCED, SEMIBALANCED',['=4,=4,=4,=1', '=4,=4,=1,=4', '-3,+4,+0,+0', '=4,+5,+0,+0', '=5,+6,+0,+0']),
+		$this->addBid('1c', new SystemBid('DOUBLETON', 'NON_FORCING', [
+			new Meaning('BALANCED', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG', 'BALANCED, SEMIBALANCED'),
 			]
 		));
 		$this->addBid('1d', new SystemBid('ARTIFICIAL', 'FORCING', [
-			new Meaning('+4S', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG','UNBALANCED, SEMIBALANCED',['+4,-3,+0,+0', '+5,-5,+0,+0']),
+			new Meaning('+4D', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG','UNBALANCED, SEMIBALANCED',['+4,-3,+0,+0', '+5,-5,+0,+0']),
 			]
 		));
 		$this->addBid('1h', new SystemBid('ARTIFICIAL', 'NON_FORCING', [

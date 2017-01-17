@@ -8,7 +8,7 @@ class Board
 	private $deal;
 	private $eastWest;
 	private $northSouth;
-	private $winds;
+	private $players;
 	private $bidding;
 	private $dealer;
 
@@ -17,19 +17,30 @@ class Board
 		$this->deal = $deal;
 		$this->eastWest = $eastWest;
 		$this->northSouth = $northSouth;
-		$this->winds = [];
-		$this->winds[] = $northSouth->getPlayer1();
-		$this->winds[] = $eastWest->getPlayer1();
-		$this->winds[] = $northSouth->getPlayer2();
-		$this->winds[] = $eastWest->getPlayer2();
+		$this->players = [];
+		$this->players['N'] = $northSouth->getPlayer1();
+		$this->players['E'] = $eastWest->getPlayer1();
+		$this->players['S'] = $northSouth->getPlayer2();
+		$this->players['W'] = $eastWest->getPlayer2();
 		$this->getDealer();
 		$this->bidding = [];
 	}
 
+	public function getPlayerHand(Player $player1)
+	{
+		foreach ($this->players as $key => $player) {
+			if ($player == $player1) {
+				return $this->getDeal()->getHand($key);
+			}
+		}
+		return null;
+	}
+
 	public function getDealer()
 	{
-		$wind = ($this->getDeal()->getNumber() % 4) - 1;
-		return $this->dealer = $this->winds[$wind];
+		$winds = ['N', 'E', 'S', 'W'];
+		$wind = (($this->getDeal()->getNumber() - 1) % 4);
+		return $this->dealer = $this->players[$winds[$wind]];
 	}
 
 	public function getDeal()
@@ -39,8 +50,9 @@ class Board
 
 	public function getNextPlayer()
 	{
-		$wind = ($this->getDeal()->getNumber() + count($this->bidding) + 1) % 4;
-		return $this->winds[$wind];
+		$winds = ['N', 'E', 'S', 'W'];
+		$wind = (($this->getDeal()->getNumber() + count($this->bidding) - 1) % 4);
+		return $this->players[$winds[$wind]];
 	}
 
 	public function getBidding()
@@ -51,7 +63,7 @@ class Board
 	public function getNextBid()
 	{
 		$nextBid = $this->getNextPlayer()->askNextBid($this);
-		$bidding[] = $nextBid;
+		$this->bidding[] = $nextBid;
 		return $nextBid;
 	}
 }
