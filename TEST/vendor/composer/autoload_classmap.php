@@ -11,6 +11,9 @@ return array(
     'bbs\\BiddingSystem' => $baseDir . '/../BBS/src/bbs/BiddingSystem.php',
     'bbs\\Board' => $baseDir . '/../BBS/src/bbs/Board.php',
     'bbs\\BridgeBiddingService' => $baseDir . '/../BBS/src/bbs/BridgeBiddingService.php',
+    'bbs\\BridgeCommentator' => $baseDir . '/../BBS/src/bbs/BridgeCommentator.php',
+    'bbs\\CarmaOpeningBids' => $baseDir . '/../BBS/src/bbs/CarmaOpeningBids.php',
+    'bbs\\Commentator' => $baseDir . '/../BBS/src/bbs/Commentator.php',
     'bbs\\DeBolleHarten' => $baseDir . '/../BBS/src/bbs/DeBolleHarten.php',
     'bbs\\DeBolleHartenOpeningBids' => $baseDir . '/../BBS/src/bbs/DeBolleHartenOpeningBids.php',
     'bbs\\Deal' => $baseDir . '/../BBS/src/bbs/Deal.php',
@@ -26,6 +29,7 @@ return array(
     'bbs\\Matcher' => $baseDir . '/../BBS/src/bbs/Match.php',
     'bbs\\Meaning' => $baseDir . '/../BBS/src/bbs/Meaning.php',
     'bbs\\MultiBid' => $baseDir . '/../BBS/src/bbs/MultiBid.php',
+    'bbs\\Observer' => $baseDir . '/../BBS/src/bbs/Observer.php',
     'bbs\\OpeningBids' => $baseDir . '/../BBS/src/bbs/OpeningBids.php',
     'bbs\\Pair' => $baseDir . '/../BBS/src/bbs/Pair.php',
     'bbs\\Pass' => $baseDir . '/../BBS/src/bbs/Pass.php',
@@ -38,4 +42,5 @@ return array(
     'bbs\\SystemBids' => $baseDir . '/../BBS/src/bbs/SystemBids.php',
     'bbs\\SystemCard' => $baseDir . '/../BBS/src/bbs/SystemCard.php',
     'bbs\\hasName' => $baseDir . '/../BBS/src/bbs/hasName.php',
+    'bbs\\hasObserver' => $baseDir . '/../BBS/src/bbs/hasObserver.php',
 );

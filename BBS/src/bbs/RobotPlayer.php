@@ -5,18 +5,21 @@ namespace bbs;
 
 class RobotPlayer extends Player
 {
-	public function __construct($name)
+	public function __construct(Observer $observer = null, $name)
 	{
 		$name = 'RBP_' . $name;
-		parent::__construct($name, new SystemCard('BBS', null));
+		parent::__construct($observer, $name, new SystemCard('BBS', null));
 	}
 
 	public function askNextBid(Board $board)
 	{
 		if (empty($board->getBidding())) {
-			return $this->askOpeningBid($board);
+			$nextBid = $this->askOpeningBid($board);
+		} else {
+			$nextBid = new Pass($this);
 		}
-		return new Pass($this);
+		$this->observeMe(__METHOD__, $board, $nextBid);
+		return $nextBid;
 	}
 
 	public function askOpeningBid(Board $board)

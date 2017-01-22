@@ -6,12 +6,14 @@ namespace bbs;
 class Player
 {
     use hasName;
+	use hasObserver;
 
 	private $systemCard;
 
-    public function __construct($name, SystemCard $systemCard)
+    public function __construct(Observer $observer = null, $name, $description = '', SystemCard $systemCard = null)
     {
-        $this->setName($name);
+	    $this->setObserver($observer);
+        $this->setName($name, $description);
 	    $this->systemCard = $systemCard;
     }
 

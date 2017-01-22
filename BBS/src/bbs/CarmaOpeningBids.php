@@ -11,20 +11,20 @@ class CarmaOpeningBids extends OpeningBids
 			]
 		));
 		$this->addBid('1c', new SystemBid('DOUBLETON', 'NON_FORCING', [
-			new Meaning('BALANCED', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG', 'BALANCED, SEMIBALANCED'),
+			new Meaning('BALANCED', 'HCP_WEAK_NO,HCP_STRONGER_NO', 'BALANCED, SEMIBALANCED'),
+				new Meaning('+5C', 'HCP_OPENING,HCP_STRONG', 'BALANCED, SEMIBALANCED'),
 			]
 		));
-		$this->addBid('1d', new SystemBid('ARTIFICIAL', 'FORCING', [
-			new Meaning('+4D', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG','UNBALANCED, SEMIBALANCED',['+4,-3,+0,+0', '+5,-5,+0,+0']),
+		$this->addBid('1d', new SystemBid('NATURAL', 'NON_FORCING', [
+			new Meaning('+4D', 'HCP_OPENING,HCP_STRONG','UNBALANCED, SEMIBALANCED',['-4,-4,+4,-4', '+0,+0,+5,=5']),
 			]
 		));
-		$this->addBid('1h', new SystemBid('ARTIFICIAL', 'NON_FORCING', [
-			new Meaning('BALANCED', 'HCP_WEAK_NO', 'BALANCED, SEMIBALANCED'),
-			new Meaning('BALANCED', 'HCP_STRONGER_NO', 'BALANCED, SEMIBALANCED'),
+		$this->addBid('1h', new SystemBid('NATURAL', 'NON_FORCING', [
+			new Meaning('+5H', 'HCP_OPENING', 'BALANCED, SEMIBALANCED'),
 			]
 		));
-		$this->addBid('1s', new SystemBid('ARTIFICIAL', 'FORCING', [
-			new Meaning('+4D', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG','UNBALANCED, ONESUITED',['=1,=4,=4,=4', '=4,=1,=4,=4', '-3,-3,+5,+0']),
+		$this->addBid('1s', new SystemBid('NATURAL', 'FORCING', [
+			new Meaning('+5S', 'HCP_OPENING, HCP_STRONG, HCP_VERYSTRONG','UNBALANCED, ONESUITED',['=1,=4,=4,=4', '=4,=1,=4,=4', '-3,-3,+5,+0']),
 			]
 		));
 		$this->addBid('1n', new SystemBid('BALANCED', 'NON_FORCING', [

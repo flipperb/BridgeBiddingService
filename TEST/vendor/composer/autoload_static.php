@@ -27,6 +27,9 @@ class ComposerStaticInit9d0889a63b35c498aef40e909fbab348
         'bbs\\BiddingSystem' => __DIR__ . '/../..' . '/../BBS/src/bbs/BiddingSystem.php',
         'bbs\\Board' => __DIR__ . '/../..' . '/../BBS/src/bbs/Board.php',
         'bbs\\BridgeBiddingService' => __DIR__ . '/../..' . '/../BBS/src/bbs/BridgeBiddingService.php',
+        'bbs\\BridgeCommentator' => __DIR__ . '/../..' . '/../BBS/src/bbs/BridgeCommentator.php',
+        'bbs\\CarmaOpeningBids' => __DIR__ . '/../..' . '/../BBS/src/bbs/CarmaOpeningBids.php',
+        'bbs\\Commentator' => __DIR__ . '/../..' . '/../BBS/src/bbs/Commentator.php',
         'bbs\\DeBolleHarten' => __DIR__ . '/../..' . '/../BBS/src/bbs/DeBolleHarten.php',
         'bbs\\DeBolleHartenOpeningBids' => __DIR__ . '/../..' . '/../BBS/src/bbs/DeBolleHartenOpeningBids.php',
         'bbs\\Deal' => __DIR__ . '/../..' . '/../BBS/src/bbs/Deal.php',
@@ -42,6 +45,7 @@ class ComposerStaticInit9d0889a63b35c498aef40e909fbab348
         'bbs\\Matcher' => __DIR__ . '/../..' . '/../BBS/src/bbs/Match.php',
         'bbs\\Meaning' => __DIR__ . '/../..' . '/../BBS/src/bbs/Meaning.php',
         'bbs\\MultiBid' => __DIR__ . '/../..' . '/../BBS/src/bbs/MultiBid.php',
+        'bbs\\Observer' => __DIR__ . '/../..' . '/../BBS/src/bbs/Observer.php',
         'bbs\\OpeningBids' => __DIR__ . '/../..' . '/../BBS/src/bbs/OpeningBids.php',
         'bbs\\Pair' => __DIR__ . '/../..' . '/../BBS/src/bbs/Pair.php',
         'bbs\\Pass' => __DIR__ . '/../..' . '/../BBS/src/bbs/Pass.php',
@@ -54,6 +58,7 @@ class ComposerStaticInit9d0889a63b35c498aef40e909fbab348
         'bbs\\SystemBids' => __DIR__ . '/../..' . '/../BBS/src/bbs/SystemBids.php',
         'bbs\\SystemCard' => __DIR__ . '/../..' . '/../BBS/src/bbs/SystemCard.php',
         'bbs\\hasName' => __DIR__ . '/../..' . '/../BBS/src/bbs/hasName.php',
+        'bbs\\hasObserver' => __DIR__ . '/../..' . '/../BBS/src/bbs/hasObserver.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
