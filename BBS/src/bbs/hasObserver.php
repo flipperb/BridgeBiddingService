@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: flipboer
- * Date: 22/01/2017
- * Time: 12:11
- */
 
 namespace bbs;
 

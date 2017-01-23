@@ -34,6 +34,7 @@ return array(
     'bbs\\Pair' => $baseDir . '/../BBS/src/bbs/Pair.php',
     'bbs\\Pass' => $baseDir . '/../BBS/src/bbs/Pass.php',
     'bbs\\Player' => $baseDir . '/../BBS/src/bbs/Player.php',
+    'bbs\\Publisher' => $baseDir . '/../BBS/src/bbs/Publisher.php',
     'bbs\\RandomDeal' => $baseDir . '/../BBS/src/bbs/RandomDeal.php',
     'bbs\\RobotPlayer' => $baseDir . '/../BBS/src/bbs/RobotPlayer.php',
     'bbs\\SingleBid' => $baseDir . '/../BBS/src/bbs/SingleBid.php',

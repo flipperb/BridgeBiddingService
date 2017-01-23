@@ -1,23 +1,35 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: flipboer
- * Date: 22/01/2017
- * Time: 12:10
- */
 
 namespace bbs;
 
 
 class Observer
 {
-	public function observe($object, $method, $in, $out)
+	use hasName;
+
+	private $publishers;
+	private $observed;
+
+	public function __construct($name, $publishers)
 	{
-		$this->echoObservation($object, $method, $in, $out);
+		$this->publishers = $publishers;
 	}
 
-	public function echoObservation($object, $method, $in, $out)
+	public function observe($object, $method, $in, $out)
 	{
-		echo $method . ' ' . $object->getName();
+		$exploded = explode('::', $method);
+		$className = $exploded[0];
+		$functionName = $exploded[0];
+
+		$observed = new Observed($this, $className, $object, $functionName, $in, $out);
+		$this->publish($observed);
+	}
+
+	public function publish($observed)
+	{
+		foreach ($this->publishers as $publisher) {
+			$publisher->publishObservation($observed);
+		}
 	}
 }
+

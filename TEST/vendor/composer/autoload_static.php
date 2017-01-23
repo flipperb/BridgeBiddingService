@@ -50,6 +50,7 @@ class ComposerStaticInit9d0889a63b35c498aef40e909fbab348
         'bbs\\Pair' => __DIR__ . '/../..' . '/../BBS/src/bbs/Pair.php',
         'bbs\\Pass' => __DIR__ . '/../..' . '/../BBS/src/bbs/Pass.php',
         'bbs\\Player' => __DIR__ . '/../..' . '/../BBS/src/bbs/Player.php',
+        'bbs\\Publisher' => __DIR__ . '/../..' . '/../BBS/src/bbs/Publisher.php',
         'bbs\\RandomDeal' => __DIR__ . '/../..' . '/../BBS/src/bbs/RandomDeal.php',
         'bbs\\RobotPlayer' => __DIR__ . '/../..' . '/../BBS/src/bbs/RobotPlayer.php',
         'bbs\\SingleBid' => __DIR__ . '/../..' . '/../BBS/src/bbs/SingleBid.php',

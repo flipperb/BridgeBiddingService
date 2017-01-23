@@ -7,7 +7,6 @@ class RobotPlayer extends Player
 {
 	public function __construct(Observer $observer = null, $name)
 	{
-		$name = 'RBP_' . $name;
 		parent::__construct($observer, $name, new SystemCard('BBS', null));
 	}
 
@@ -55,6 +54,7 @@ class RobotPlayer extends Player
 	public function matchBid(Hand $hand, SystemBid $systemBid)
 	{
 		$bestMatch = 0;
+		$matchers = [];
 		foreach ($systemBid->getMeanings() as $meaning) {
 			$matchers = $this->createMatchers($hand, $meaning);
 			$totalMatch = 0;
@@ -66,6 +66,7 @@ class RobotPlayer extends Player
 				$bestMatch = $match;
 			}
 		}
+		$this->observeMe(__METHOD__, [$hand, $systemBid], [$matchers, $bestMatch]);
 		return $bestMatch;
 	}
 }
