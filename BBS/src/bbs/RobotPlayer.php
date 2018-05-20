@@ -12,24 +12,25 @@ class RobotPlayer extends Player
 
 	public function askNextBid(Board $board)
 	{
+		$this->observeMe('considering next bid', __METHOD__, [$board]);
 		if (empty($board->getBidding())) {
 			$nextBid = $this->askOpeningBid($board);
 		} else {
 			$nextBid = new Pass($this);
 		}
-		$this->observeMe(__METHOD__, $board, $nextBid);
+		$this->observeMe('decided next bid', __METHOD__, [$board, $nextBid]);
 		return $nextBid;
 	}
 
 	public function askOpeningBid(Board $board)
 	{
 		$openingBids = new DeBolleHartenOpeningBids();
-		$openingBids->createBids();
+		$this->observeMe('considering opening bid', __METHOD__, [$board, $openingBids]);
+		$openingBids->loadBids();
 		$matches = [];
 		foreach ($openingBids->getBids() as $key => $bid) {
 			$matches[$key] = $this->matchBid($board->getPlayerHand($this), $bid);
 		}
-
 		$bestKey = '';
 		$bestMatch = 0;
 		foreach ($matches as $key => $match) {
@@ -38,6 +39,7 @@ class RobotPlayer extends Player
 				$bestMatch = $match;
 			}
 		}
+		$this->observeMe('matching opening bids', __METHOD__, [$board, $openingBids, $matches, $bestMatch]);
 		return new Bid($this, $bestKey, $openingBids->getBids()[$bestKey]);
 	}
 
@@ -54,7 +56,6 @@ class RobotPlayer extends Player
 	public function matchBid(Hand $hand, SystemBid $systemBid)
 	{
 		$bestMatch = 0;
-		$matchers = [];
 		foreach ($systemBid->getMeanings() as $meaning) {
 			$matchers = $this->createMatchers($hand, $meaning);
 			$totalMatch = 0;
@@ -66,7 +67,6 @@ class RobotPlayer extends Player
 				$bestMatch = $match;
 			}
 		}
-		$this->observeMe(__METHOD__, [$hand, $systemBid], [$matchers, $bestMatch]);
 		return $bestMatch;
 	}
 }

@@ -2,7 +2,6 @@
 
 namespace bbs;
 
-
 class Deal
 {
     private $number;
@@ -24,9 +23,9 @@ class Deal
         return $this->hands;
     }
 
-    public function getHand($wind)
+    public function getHand($seat)
     {
-	    return $this->hands[$wind];
+	    return $this->hands[$seat];
     }
 }
 

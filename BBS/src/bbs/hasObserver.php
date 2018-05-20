@@ -10,12 +10,19 @@ trait hasObserver
 	protected function setObserver(Observer $observer)
 	{
 		$this->observer = $observer;
+		return $this->observer;
 	}
 
-	protected function observeMe($method, $in, $out)
+	protected function getObserver()
 	{
-		if ($this->observer) {
-			$this->observer->observe($this, $method, $in, $out);
+		return $this->observer;
+	}
+
+	protected function observeMe($doing, $method, array $params)
+	{
+		if ($this->getObserver()) {
+			return $this->getObserver()->observe($this, $doing, $method, $params);
 		}
 	}
 }
+

@@ -2,25 +2,23 @@
 
 namespace bbs;
 
-
 class Event
 {
 	private $observedBy;
-	private $className;
 	private $object;
-	private $functionName;
-	private $ins;
-	private $outs;
+	private $name;
+	private $method;
+	private $params;
 	private $time;
+	private $microtime;
 
-	public function __construct(Observer $observedBy, $className, $object, $functionName, $ins, $outs)
+	public function __construct($observedBy, $object, $name, $method, $params = [])
 	{
 		$this->observedBy = $observedBy;
-		$this->className = $className;
 		$this->object = $object;
-		$this->functionName = $functionName;
-		$this->ins = $ins;
-		$this->outs = $outs;
+		$this->name = $name;
+		$this->method = $method;
+		$this->params = $params;
 		$this->time = time();
 		$this->microtime = microtime();
 	}
@@ -32,7 +30,7 @@ class Event
 
 	public function getClassName()
 	{
-		return $this->className;
+		return substr(explode('::', $this->method)[0],strlen('bbs/'));
 	}
 
 	public function getObject()
@@ -40,19 +38,24 @@ class Event
 		return $this->object;
 	}
 
-	public function getFunctionName()
+	public function getMethod()
 	{
-		return $this->functionName;
+		return $this->method;
 	}
 
-	public function getIns()
+	public function getName()
 	{
-		return $this->ins;
+		return $this->name;
 	}
 
-	public function getOuts()
+	public function getFunction()
 	{
-		return $this->outs;
+		return explode('::', $this->method)[1];
+	}
+
+	public function getParams()
+	{
+		return $this->params;
 	}
 
 	public function getTime()
@@ -63,11 +66,6 @@ class Event
 	public function getMicrotime()
 	{
 		return $this->microtime;
-	}
-
-	public function getObjectName()
-	{
-		return $this->object->getName();
 	}
 
 }

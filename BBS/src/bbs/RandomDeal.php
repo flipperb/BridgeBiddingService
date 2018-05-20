@@ -6,7 +6,7 @@ class RandomDeal extends Deal
 {
     const SUITS = ['C','D','H','S'];
     const VALUES = ['2','3','4','5','6','7','8','9','T','J','Q','K','A'];
-    const WINDS = ['N','E','S','W'];
+    const SEATS = ['N','E','S','W'];
     const NUM_CARDS_IN_HAND = 13;
     const NUM_VALUES = 13;
     const NUM_SUITS = 4;
@@ -28,7 +28,7 @@ class RandomDeal extends Deal
         $hands = [];
         $cards52 = array_chunk($cards, self::NUM_CARDS_IN_HAND);
         foreach ($cards52 as $cards13) {
-            $hands[self::WINDS[count($hands)]] = $this->createHand($cards13);
+            $hands[self::SEATS[count($hands)]] = $this->createHand($cards13);
         }
         return $hands;
     }

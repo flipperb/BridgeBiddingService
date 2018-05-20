@@ -22,7 +22,6 @@ class Hand
 		$this->getDistribution();
 		$this->getShape();
 		$this->getInShapes();
-		$this->inHcpRanges();
 	}
 
 	public function getSuits()
@@ -101,41 +100,6 @@ class Hand
 		return false;
 	}
 
-	public function inHcpRanges()
-	{
-		if (isset($this->inRanges)) {
-			return $this->inRanges;
-		}
-
-		$hcpRanges = [
-			'VERYWEAK' => [0, 5],
-			'WEAK' => [4, 7],
-			'PREEMPTIVE' => [5, 10],
-			'INVITATIONAL' => [7, 11],
-			'OPENING' => [11, 15],
-			'STRONG' => [15, 37],
-			'VERYSTRONG' => [18, 37],
-			'WEAKNOTRUMP' => [11, 14],
-			'STRONGNOTRUMP' => [14, 17],
-			'STRONGERNOTRUMP' => [17, 19],
-			'TWONOTRUMP' => [19, 21],
-			'THREENOTRUMP' => [21, 23],
-			'FOURNOTRUMP' => [23, 25],
-			'FIVENOTRUMP' => [25, 27],
-			'SIXNOTRUMP' => [27, 29],
-			'SEVENNOTRUMP' => [29, 37],
-		];
-
-		$this->inRanges = [];
-		$hcp = $this->getHcp();
-		foreach ($hcpRanges as $rangeName => $hcpRange) {
-			if ($hcp >= $hcpRange[0] && $hcp <= $hcpRange[1]) {
-				$this->inRanges[] = $rangeName;
-			}
-		}
-		return $this->inRanges;
-	}
-
 	public function getHcp()
 	{
 		$hcp_array = [
@@ -181,6 +145,16 @@ class Hand
 			$this->numControls = $this->calcPoints($num_controls_array);
 		}
 		return $this->numControls;
+	}
+
+	public function HandToText()
+	{
+		$text = '';
+		foreach ($this->getSuits() as $key => $suit) {
+			$text .= empty($text) ? '' : ' ';
+			$text .= $key . $suit;
+		}
+		return $text;
 	}
 
 	private function calcPoints($points_array)

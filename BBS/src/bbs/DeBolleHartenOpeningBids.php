@@ -4,7 +4,7 @@ namespace bbs;
 
 class DeBolleHartenOpeningBids extends OpeningBids
 {
-	public function createBids()
+	public function loadBids()
 	{
 		$this->addBid('pass', new SystemBid('PASS', 'NON_FORCING', [
 				new Meaning('PASS', 'HCP_WEAK, HCP_VERYWEAK, HCP_INVITATIONAL', ''),

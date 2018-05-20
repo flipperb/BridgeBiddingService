@@ -2,26 +2,39 @@
 
 namespace bbs;
 
-
 class Publisher
 {
 	use hasName;
 
 	private $events = [];
-	private $publications = [];
+	private $subscribers = [];
 
-	public function __construct($name)
+	public function __construct($name, $subscribers)
 	{
 		$this->setName($name);
+		$this->subscribers = is_array($subscribers) ? $subscribers : [$subscribers];
 	}
 
-	public function addEvent(Event $event)
+	public function informObserved($observer, $object, $method, $in, $out)
+	{
+		$event = $this->createEvent($observer, $object, $method, $in, $out);
+		$this->addEvent($event);
+		echo $this->publishTitle($event) . "\n";
+	}
+
+	protected function createEvent($observer, $object, $method, $in, $out)
+	{
+		$event = new Event($this, $observer, $object, $method, $in, $out);
+		return $event;
+	}
+
+	protected function addEvent($event)
 	{
 		$this->events[] = $event;
-		$this->publishTitle($event);
+		return count($this->events);
 	}
 
-	public function publishAll(Event $event)
+	public function publishEvent(Event $event)
 	{
 		$this->publishObserver($event);
 		$this->publishTitle($event);
@@ -38,8 +51,8 @@ class Publisher
 	{
 		$msg = $event->getClassName();
 		$msg .= " " . $event->getObjectName();
-		$msg .= " did " . $event->getFunctionName();
-		$msg .= " with " . $event->getIns();
+		$msg .= " did " . $event->getFunction();
+		//$msg .= " with " . implode($event->getIns());
 		return $msg;
 	}
 
@@ -70,7 +83,7 @@ class Publisher
 			'MICROTIME' => $event->getMicrotime(),
 			'BY' => $event->getObservedBy()->getName(),
 			'CLASS' => $event->getClassName(),
-			'FUNCTION' => $event->getFunctionName(),
+			'FUNCTION' => $event->getMethod(),
 			'RESULTS' => $this->publishOuts($event),
 			'WHAT' => $event->getObjectName(),
 			'WITH' => $this->publishIns($event),

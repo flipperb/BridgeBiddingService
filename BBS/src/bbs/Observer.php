@@ -2,33 +2,45 @@
 
 namespace bbs;
 
-
 class Observer
 {
 	use hasName;
 
-	private $publishers;
-	private $observed;
+	private $subscribers;
+	private $events;
 
-	public function __construct($name, $publishers)
+	public function __construct($name, $subscribers)
 	{
-		$this->publishers = $publishers;
+		$this->subscribers = is_array($subscribers) ? $subscribers : [$subscribers];
+		$this->events = [];
 	}
 
-	public function observe($object, $method, $in, $out)
+	public function observe($object, $name, $method, $params)
 	{
-		$exploded = explode('::', $method);
-		$className = $exploded[0];
-		$functionName = $exploded[0];
-
-		$observed = new Observed($this, $className, $object, $functionName, $in, $out);
-		$this->publish($observed);
+		$newEvent = new Event($this, $object, $name, $method, $params);
+		$this->addEvent($newEvent);
+		$this->publishEvent($newEvent);
 	}
 
-	public function publish($observed)
+	public function getSubcribers()
 	{
-		foreach ($this->publishers as $publisher) {
-			$publisher->publishObservation($observed);
+		return $this->subscribers;
+	}
+
+	protected function addSubscriber($subscriber)
+	{
+		return $this->subscribers[] = $subscriber;
+	}
+
+	protected function addEvent(Event $event)
+	{
+		$this->events[] = $event;
+	}
+
+	protected function publishEvent($event)
+	{
+		foreach ($this->getSubcribers() as $subscribers) {
+			$subscribers->informEvent($event);
 		}
 	}
 }

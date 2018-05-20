@@ -34,9 +34,9 @@ class Board
 
 	public function getDealer()
 	{
-		$winds = ['N', 'E', 'S', 'W'];
-		$wind = (($this->getDeal()->getNumber() - 1) % 4);
-		return $this->dealer = $this->players[$winds[$wind]];
+		$seats = ['N', 'E', 'S', 'W'];
+		$seat = (($this->getDeal()->getNumber() - 1) % 4);
+		return $this->dealer = $this->players[$seats[$seat]];
 	}
 
 	public function getDeal()
@@ -44,15 +44,11 @@ class Board
 		return $this->deal;
 	}
 
-	public function startPlay()
-	{
-	}
-
 	public function getNextPlayer()
 	{
-		$winds = ['N', 'E', 'S', 'W'];
-		$wind = (($this->getDeal()->getNumber() + count($this->bidding) - 1) % 4);
-		$nextPlayer = $this->players[$winds[$wind]];
+		$seats = ['N', 'E', 'S', 'W'];
+		$seat = (($this->getDeal()->getNumber() + count($this->bidding) - 1) % 4);
+		$nextPlayer = $this->players[$seats[$seat]];
 		return $nextPlayer;
 	}
 

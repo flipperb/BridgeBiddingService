@@ -10,8 +10,8 @@ class BoardTest extends \BaseTest
 	 */
 	public function createBoard()
     {
-	    $publisher = new Publisher();
-		$observer = new Observer([$publisher]);
+	    $publisher = new Publisher('BBS', []);
+		$observer = new Observer('BBSO', [$publisher]);
 
 	    $martine = new RobotPlayer($observer, 'Martine');
 	    $victor = new RobotPlayer($observer, 'Victor');
@@ -23,7 +23,10 @@ class BoardTest extends \BaseTest
 		    $hand = $board1->getPlayerHand($board1->getNextPlayer());
 		    $nextBid = $board1->getNextBid();
 	    }
+
 /*
+ *
+ *
 	    for ($i=1; $i<=100; $i++) {
 		    $board1 = new Board(new RandomDeal($i, -$i), $martine, $victor, $flip, $arjan);
 		    echo "\n" . $board1->getDealer()->getName() . ": ";
